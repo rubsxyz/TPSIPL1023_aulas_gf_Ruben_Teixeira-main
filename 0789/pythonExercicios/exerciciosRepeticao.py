@@ -139,7 +139,29 @@ print(f"O maior número digitado é: {maior_numero}")
 
 """
 Faça um programa que leia 5 números e informe a soma e a média dos números.
+"""
+soma = 0 #cria a varivel para atribuir a soma para depois fazer a media
+
+for i in range(5): #crio um for que vai de 0 a 4
+    numero = float(input(f"Digite o número {i + 1}: "))
+    soma += numero
+
+media = soma / 5
+
+# Exibir os resultados
+print(f"A soma dos números é: {soma}")
+print(f"A média dos números é: {media}")
+"""
 Faça um programa que imprima na tela apenas os números ímpares entre 1 e 50.
+"""
+
+for i in range(50): # cria um loop for com range de 50
+    if i % 2 != 0: # se não restar 0 quando i for divisivel por 2, então o numero é ímpar
+        print(i)
+
+for i in range (1, 51, 2): # Este código começará em 1, terminará em 50 e 
+    print(i)               # incrementará de 2 em 2, exibindo apenas os números ímpares dentro do intervalo especificado.
+"""
 Faça um programa que receba dois números inteiros e gere os números inteiros que estão no intervalo compreendido por eles.
 Altere o programa anterior para mostrar no final a soma dos números.
 Desenvolva um gerador de tabuada, capaz de gerar a tabuada de qualquer número inteiro entre 1 a 10. O usuário deve informar de qual numero ele deseja ver a tabuada. A saída deve ser conforme o exemplo abaixo:
