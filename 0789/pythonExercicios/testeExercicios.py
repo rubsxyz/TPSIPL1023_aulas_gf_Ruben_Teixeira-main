@@ -11,3 +11,5 @@ for i in range(num1 + 1, num2):
     print(i)
     soma += i
     print(soma)
+
+    print("ola amigos")
