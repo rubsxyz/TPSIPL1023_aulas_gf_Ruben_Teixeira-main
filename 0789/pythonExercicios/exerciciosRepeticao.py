@@ -163,16 +163,42 @@ for i in range (1, 51, 2): # Este código começará em 1, terminará em 50 e
     print(i)               # incrementará de 2 em 2, exibindo apenas os números ímpares dentro do intervalo especificado.
 """
 Faça um programa que receba dois números inteiros e gere os números inteiros que estão no intervalo compreendido por eles.
+"""
+
+num1 = int(input("Número 1:"))
+num2 = int(input("Número 2:"))
+
+for i in range(num1 + 1, num2):
+    print(i)
+"""
+Faça um programa que receba dois números inteiros e gere os números inteiros que estão no intervalo compreendido por eles.
 Altere o programa anterior para mostrar no final a soma dos números.
+"""
+num1 = int(input("Número 1:"))
+num2 = int(input("Número 2:"))
+
+soma = 0
+
+for intervalo in range(num1 + 1, num2):
+    print(intervalo)
+    soma += intervalo
+
+print(soma)
+"""
 Desenvolva um gerador de tabuada, capaz de gerar a tabuada de qualquer número inteiro entre 1 a 10. O usuário deve informar de qual numero ele deseja ver a tabuada. A saída deve ser conforme o exemplo abaixo:
 Tabuada de 5:
 5 X 1 = 5
 5 X 2 = 10
 """
+numTabuada = int(input("Insira o número no qual pretende saber a tabuada: "))
 
+if numTabuada > 0:
+    for i in range(11):
+        soma = i * numTabuada
+        print(f"{numTabuada} X {i} = {soma}")
+else:
+    print("Insira um número maior que 0")
 """
-...
-5 X 10 = 50
 Faça um programa que peça dois números, base e expoente, calcule e mostre o primeiro número elevado ao segundo número. Não utilize a função de potência da linguagem.
 Faça um programa que peça 10 números inteiros, calcule e mostre a quantidade de números pares e a quantidade de números impares.
 A série de Fibonacci é formada pela seqüência 1,1,2,3,5,8,13,21,34,55,... Faça um programa capaz de gerar a série até o n−ésimo termo.

@@ -1,15 +1,9 @@
 """
-Faça um programa que receba dois números inteiros e gere os números inteiros que estão no intervalo compreendido por eles.
-Altere o programa anterior para mostrar no final a soma dos números.
+Faça um programa que peça dois números, base e expoente, calcule e mostre o primeiro número elevado ao segundo número. 
+Não utilize a função de potência da linguagem.
 """
-num1 = int(input("Número 1:"))
-num2 = int(input("Número 2:"))
+num1 = int(input("Insira o numero 1: "))
+num2 = int(input("Insira o numero 2: "))
+base = int(input("Qual a base: "))
+expoente = int(input("Qual o expoente: "))
 
-soma = 0
-
-for i in range(num1 + 1, num2):
-    print(i)
-    soma += i
-    print(soma)
-
-    print("ola amigos")
