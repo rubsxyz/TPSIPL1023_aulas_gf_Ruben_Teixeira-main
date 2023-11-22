@@ -199,14 +199,162 @@ if numTabuada > 0:
 else:
     print("Insira um número maior que 0")
 """
-Faça um programa que peça dois números, base e expoente, calcule e mostre o primeiro número elevado ao segundo número. Não utilize a função de potência da linguagem.
+Faça um programa que peça dois números, base e expoente, calcule e mostre o primeiro número elevado ao segundo número. 
+Não utilize a função de potência da linguagem.
+"""
+base = int(input("Qual a base: "))
+expoente = int(input("Qual o expoente: "))
+
+resultado = 1
+
+for _ in range(expoente):
+    resultado *= base  # Multiplica a base pelo resultado 'expoente' vezes
+
+print("O resultado é:", resultado)
+"""
 Faça um programa que peça 10 números inteiros, calcule e mostre a quantidade de números pares e a quantidade de números impares.
+"""
+pares = 0
+impares = 0
+
+for i in range(10):
+    num = int(input("Insira um número inteiro: "))
+   
+    if num % 2 == 0:
+        pares += 1
+    elif num % 2 != 0:
+        impares += 1
+
+print(f"Ao todo tem {pares} números pares")
+print(f"Ao todo tem {impares} números ímpares")
+"""
 A série de Fibonacci é formada pela seqüência 1,1,2,3,5,8,13,21,34,55,... Faça um programa capaz de gerar a série até o n−ésimo termo.
+"""
+
+num1 = 1
+num2 = 1
+soma = 0
+
+n = int(input("Quantas séries quer: "))
+
+print(num1, num2, end=" ")
+
+for i in range(2, n):
+    soma = num1 + num2
+
+    print(soma, end=" ")
+
+    num2 = num1
+    num1 = soma
+"""
 A série de Fibonacci é formada pela seqüência 0,1,1,2,3,5,8,13,21,34,55,... Faça um programa que gere a série até que o valor seja maior que 500.
+"""
+
+num1 = 1
+num2 = 1
+soma = 0
+
+n = int(input("Quantas séries quer: "))
+
+print(num1, num2, end=" ")
+
+for i in range(2, n):
+    soma = num1 + num2
+
+    if soma <= 500:
+        print(soma, end=" ")
+
+        num2 = num1
+        num1 = soma
+    else:
+        break
+"""
 Faça um programa que calcule o fatorial de um número inteiro fornecido pelo usuário. Ex.: 5!=5.4.3.2.1=120
+"""
+soma = 1
+
+factorial = int(input("Factorial: "))
+
+for i in range(factorial):
+    print(f"{soma} x {[factorial]}")
+    soma *= factorial
+    factorial -= 1
+
+print(soma)
+"""
 Faça um programa que, dado um conjunto de N números, determine o menor valor, o maior valor e a soma dos valores.
+"""
+soma = 0 #cria a variavel para ser usada no ciclo for
+menor_valor = float('inf')
+maior_valor = float('-inf')
+
+n = int(input("Quantos números quer: ")) #cria o input para saber o conjunto de numeros
+
+for i in range(n): #ciclo for com o input do user dado em 'n'
+    valores = int(input(f"Insira o {i + 1} valor: ")) #cria o input para saber os numeros dos valores
+
+    soma += valores #faz a soma de todos os numeros dados pelo user na linha 9
+    
+    # Verifica se o valor atual é menor que o menor valor encontrado até agora
+    if valores < menor_valor:
+        menor_valor = valores
+    
+    # Verifica se o valor atual é maior que o maior valor encontrado até agora
+    if valores > maior_valor:
+        maior_valor = valores
+
+print(f"A soma é: {soma}\nMaior valor: {maior_valor}\nMenor valor: {menor_valor}") #printa tudo
+"""
 Altere o programa anterior para que ele aceite apenas números entre 0 e 1000.
-Altere o programa de cálculo do fatorial, permitindo ao usuário calcular o fatorial várias vezes e limitando o fatorial a números inteiros positivos e menores que 16.
+"""
+soma = 0 #cria a variavel para ser usada no ciclo for
+menor_valor = float('inf')
+maior_valor = float('-inf')
+
+n = int(input("Quantos números quer: ")) #cria o input para saber o conjunto de numeros
+
+for i in range(n): #ciclo for com o input do user dado em 'n'
+    valores = int(input(f"Insira o {i + 1} valor: ")) #cria o input para saber os numeros dos valores
+
+    while valores < 0  or valores > 1000: #enquanto os valores nao forem entre 0 e 1000, dá erro e volta a perguntar
+        print("Insira apenas valores entre 0 e 1000!")
+        valores = int(input(f"Insira o {i + 1} valor: "))
+
+    soma += valores #faz a soma de todos os numeros dados pelo user na linha 9
+    
+    # Verifica se o valor atual é menor que o menor valor encontrado até agora
+    if valores < menor_valor:
+        menor_valor = valores
+    
+    # Verifica se o valor atual é maior que o maior valor encontrado até agora
+    if valores > maior_valor:
+        maior_valor = valores
+
+print(f"A soma é: {soma}\nMaior valor: {maior_valor}\nMenor valor: {menor_valor}") #printa tudo
+"""
+Altere o programa de cálculo do fatorial, permitindo ao usuário calcular o fatorial várias vezes 
+e limitando o fatorial a números inteiros positivos e menores que 16.
+"""
+while True:
+    soma = 1
+
+    factorial = int(input("Factorial: "))
+
+    while factorial > 16 or factorial < 0:
+        print("Insira um número menor que 16, ou que seja inteiro positivo!")
+        factorial = int(input("Factorial: "))
+
+    for i in range(1, factorial + 1):
+        soma *= i
+
+    print(f"O fatorial de {factorial} é {soma}")
+
+    repetir = input("Repetir? ")
+    
+    if repetir.lower() != 's':
+        print("Obrigado por ter usado esta aplicação!")
+        break
+"""
 Faça um programa que peça um número inteiro e determine se ele é ou não um número primo. Um número primo é aquele que é divisível somente por ele mesmo e por 1.
 Altere o programa de cálculo dos números primos, informando, caso o número não seja primo, por quais número ele é divisível.
 Faça um programa que mostre todos os primos entre 1 e N sendo N um número inteiro fornecido pelo usuário. O programa deverá mostrar também o número de divisões que ele executou para encontrar os números primos. Serão avaliados o funcionamento, o estilo e o número de testes (divisões) executados.
