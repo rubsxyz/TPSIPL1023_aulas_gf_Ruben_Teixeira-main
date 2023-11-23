@@ -1,24 +1,12 @@
 """
-Altere o programa de cálculo do fatorial, permitindo ao usuário calcular o fatorial várias vezes 
-e limitando o fatorial a números inteiros positivos e menores que 16.
+Faça um programa que peça um número inteiro e determine se ele é ou não um número primo. 
+Um número primo é aquele que é divisível somente por ele mesmo e por 1.
 """
-while True:
-    soma = 1
+numInteiro = int(input("Número Inteiro: "))
 
-    factorial = int(input("Factorial: "))
-
-    while factorial > 16 or factorial < 0:
-        print("Insira um número menor que 16, ou que seja inteiro positivo!")
-        factorial = int(input("Factorial: "))
-
-    for i in range(1, factorial + 1):
-        soma *= i
-
-    print(f"O fatorial de {factorial} é {soma}")
-
-    repetir = input("Repetir? ")
-    
-    if repetir.lower() != 's':
-        print("Obrigado por ter usado esta aplicação!")
+for i in range(2, int(numInteiro ** 0.5) + 1):
+    if numInteiro % i == 0:
+        print(f"{numInteiro} não é um número primo")
         break
-        
+else:
+    print(f"{numInteiro} é um número primo")
