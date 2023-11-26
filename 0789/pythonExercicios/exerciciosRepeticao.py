@@ -355,28 +355,244 @@ while True:
         print("Obrigado por ter usado esta aplicação!")
         break
 """
-Faça um programa que peça um número inteiro e determine se ele é ou não um número primo. Um número primo é aquele que é divisível somente por ele mesmo e por 1.
+Faça um programa que peça um número inteiro e determine se ele é ou não um número primo. 
+Um número primo é aquele que é divisível somente por ele mesmo e por 1.
+"""
+numInteiro = int(input("Número Inteiro: "))
+
+for i in range(2, int(numInteiro ** 0.5) + 1):
+    if numInteiro % i == 0:
+        print(f"{numInteiro} não é um número primo")
+        break
+else:
+    print(f"{numInteiro} é um número primo")
+"""
+Faça um programa que peça um número inteiro e determine se ele é ou não um número primo. 
+Um número primo é aquele que é divisível somente por ele mesmo e por 1.
+
 Altere o programa de cálculo dos números primos, informando, caso o número não seja primo, por quais número ele é divisível.
-Faça um programa que mostre todos os primos entre 1 e N sendo N um número inteiro fornecido pelo usuário. O programa deverá mostrar também o número de divisões que ele executou para encontrar os números primos. Serão avaliados o funcionamento, o estilo e o número de testes (divisões) executados.
-Faça um programa que calcule o mostre a média aritmética de N notas.
-Faça um programa que peça para n pessoas a sua idade, ao final o programa devera verificar se a média de idade da turma varia entre 0 e 25,26 e 60 e maior que 60; e então, dizer se a turma é jovem, adulta ou idosa, conforme a média calculada.
-Numa eleição existem três candidatos. Faça um programa que peça o número total de eleitores. Peça para cada eleitor votar e ao final mostrar o número de votos de cada candidato.
-Faça um programa que calcule o número médio de alunos por turma. Para isto, peça a quantidade de turmas e a quantidade de alunos para cada turma. As turmas não podem ter mais de 40 alunos.
-Faça um programa que calcule o valor total investido por um colecionador em sua coleção de CDs e o valor médio gasto em cada um deles. O usuário deverá informar a quantidade de CDs e o valor para em cada um.
-O Sr. Manoel Joaquim possui uma grande loja de artigos de R$ 1,99, com cerca de 10 caixas. Para agilizar o cálculo de quanto cada cliente deve pagar ele desenvolveu um tabela que contém o número de itens que o cliente comprou e ao lado o valor da conta. Desta forma a atendente do caixa precisa apenas contar quantos itens o cliente está levando e olhar na tabela de preços. Você foi contratado para desenvolver o programa que monta esta tabela de preços, que conterá os preços de 1 até 50 produtos, conforme o exemplo abaixo:
+"""
+
+numInteiro = int(input("Número Inteiro: "))
+
+if numInteiro < 2:
+    print(f"{numInteiro} não é um número primo")
+    exit()
+
+divisor = False
+
+for i in range(2, int(numInteiro ** 0.5) + 1):
+    if numInteiro % i == 0:
+        print(f"{numInteiro} não é um número primo. É divisivel por {i}")
+        divisor = True
+        break
+else:
+    print(f"{numInteiro} é um número primo")
+"""
+Faça um programa que mostre todos os primos entre 1 e N sendo N um número inteiro fornecido pelo usuário. 
+O programa deverá mostrar também o número de divisões que ele executou para encontrar os números primos. 
+Serão avaliados o funcionamento, o estilo e o número de testes (divisões) executados.
+"""
+divisoes = 0
+
+n = int(input("Até qual número primo quer saber: 1-"))
+
+for i in range(2, n + 1):
+    primo = True
+    for j in range(2, int(i ** 0.5) + 1):
+        divisoes += 1
+        if i % j == 0:
+            primo = False
+            break
+    if primo:
+        print(f"Primo: {i}")
+
+print(f"Número total de divisões: {divisoes}")
+"""
+Faça um programa que calcule e mostre a média aritmética de N notas.
+"""
+soma_notas = 0
+qtd = 0
+notas_qtd = int(input("Quer calcular quantas notas: "))
+
+for i in range(notas_qtd):
+    notas = int(input(f"Nota {i + 1}: "))
+    soma_notas += notas
+    qtd += 1
+
+soma_total = soma_notas / qtd
+print(f"A soma das notas é: {soma_notas}\nQue dá de média: {int(soma_total)} " )
+"""
+Faça um programa que peça para n pessoas a sua idade, ao final o programa devera verificar se a média de idade da 
+turma varia entre 0 e 25,26 e 60 e maior que 60; e então, dizer se a turma é jovem, adulta ou idosa, conforme a média calculada.
+"""
+soma_idades = 0
+
+pessoas = int(input("Quantas pessoas: "))
+
+for i in range(pessoas):
+    idade = int(input(f"Pessoa {i + 1}, qual a sua idade: "))
+    soma_idades += idade
+
+media = soma_idades / pessoas
+print(f"A média das idades da turma é: {int(media)}")
+
+if 0 < media <= 25:
+    print("A turma é Jovem")
+elif 26 < media < 60:
+    print("A turma é Adulta")
+else:
+    print("A turma é Idosa")
+"""
+Numa eleição existem três candidatos. Faça um programa que peça o número total de eleitores. 
+Peça para cada eleitor votar e ao final mostrar o número de votos de cada candidato.
+"""
+candidato_1 = 0
+candidato_2 = 0
+candidato_3 = 0
+
+eleitores = int(input("Qual o número total de eleitores: "))
+
+for i in range(eleitores):
+    voto = int(input(f"Eleitor {i + 1}, vota em que candidato? 1, 2 ou 3: "))
+
+    while voto < 1 or voto > 3:
+        print("Por favor, vote 1, 2 ou 3")
+        voto = int(input(f"Eleitor {i + 1}, vota em que candidato? 1, 2 ou 3: "))
+
+    if voto == 1:
+        candidato_1 += 1
+    elif voto == 2:
+        candidato_2 += 1
+    elif voto == 3:
+        candidato_3 += 1
+
+print(f"Candidato 1: {candidato_1}")
+print(f"Candidato 2: {candidato_2}")
+print(f"Candidato 3: {candidato_3}")
+"""
+Faça um programa que calcule o número médio de alunos por turma. 
+Para isto, peça a quantidade de turmas e a quantidade de alunos para cada turma. 
+As turmas não podem ter mais de 40 alunos.
+"""
+alunos_total = 0
+turmas = int(input("Quantas Turmas: "))
+
+for i in range(turmas):
+    alunos_turma = int(input(f"Alunos da Turma {i + 1}: "))
+    
+    while alunos_turma > 40:
+        print("A turma não pode ter mais doque 40 alunos!") 
+        alunos_turma = int(input(f"Alunos da Turma {i + 1}: "))
+    
+    alunos_total += alunos_turma
+
+media = alunos_total / turmas
+print(f"A média de alunos é de: {int(media)}")
+"""
+Faça um programa que calcule o valor total investido por um colecionador em sua coleção de CDs e o valor médio gasto em cada um deles. 
+O usuário deverá informar a quantidade de CDs e o valor para em cada um.
+"""
+qtd_cd = int(input("Quantidade de CD's: "))
+
+valor_total_cd = 0
+
+for i in range(qtd_cd):
+    cd_valor = int(input(f"Quanto gastou no CD {i + 1}: "))
+    valor_total_cd += cd_valor
+
+media_cd = valor_total_cd / qtd_cd
+
+print(f"O valor médio gasto em cada CD é de: {int(media_cd)}")
+"""
+O Sr. Manoel Joaquim possui uma grande loja de artigos de R$ 1,99, com cerca de 10 caixas. 
+Para agilizar o cálculo de quanto cada cliente deve pagar ele desenvolveu um tabela que contém o 
+número de itens que o cliente comprou e ao lado o valor da conta. 
+
+Desta forma a atendente da caixa precisa apenas contar quantos itens o cliente está a levar e olhar na tabela de preços.
+
+Você foi contratado para desenvolver o programa que monta esta tabela de preços, que conterá os preços de 1 até 50 produtos, 
+conforme o exemplo abaixo:
+
 Lojas Quase Dois - Tabela de preços
 1 - R$ 1.99
 2 - R$ 3.98
 ...
 50 - R$ 99.50
-O Sr. Manoel Joaquim acaba de adquirir uma panificadora e pretende implantar a metodologia da tabelinha, que já é um sucesso na sua loja de 1,99. Você foi contratado para desenvolver o programa que monta a tabela de preços de pães, de 1 até 50 pães, a partir do preço do pão informado pelo usuário, conforme o exemplo abaixo:
+"""
+soma = 0
+
+items = int(input("Quantos items quer pagar: "))
+
+while items >= 51 or items <= 0:
+    print("Só pode escolher entre 1 e 50 items!!")
+    items = int(input("Quantos items quer pagar: "))
+
+for i in range(13):
+    print("*", end="")
+    if i == 12:
+        print("CAIXA", end="")
+        caixa = True
+        if caixa:
+            for i in range(14):
+                print("*", end="")
+
+for i in range(1, 51):
+    soma += 1.99
+
+    if i == items:
+        print(f"\nTerá que pagar {soma:.2f}€ por {i} items")
+"""
+O Sr. Manoel Joaquim acaba de adquirir uma panificadora e pretende implantar a metodologia da tabelinha, 
+que já é um sucesso na sua loja de 1,99. 
+
+Você foi contratado para desenvolver o programa que monta a tabela de preços de pães, 
+de 1 até 50 pães, a partir do preço do pão informado pelo usuário, conforme o exemplo abaixo:
+
 Preço do pão: R$ 0.18
 Panificadora Pão de Ontem - Tabela de preços
 1 - R$ 0.18
 2 - R$ 0.36
 ...
 50 - R$ 9.00
-O Sr. Manoel Joaquim expandiu seus negócios para além dos negócios de 1,99 e agora possui uma loja de conveniências. Faça um programa que implemente uma caixa registradora rudimentar. O programa deverá receber um número desconhecido de valores referentes aos preços das mercadorias. Um valor zero deve ser informado pelo operador para indicar o final da compra. O programa deve então mostrar o total da compra e perguntar o valor em dinheiro que o cliente forneceu, para então calcular e mostrar o valor do troco. Após esta operação, o programa deverá voltar ao ponto inicial, para registrar a próxima compra. A saída deve ser conforme o exemplo abaixo:
+"""
+soma = 0
+
+paes = int(input("Quantos pães quer comprar: "))
+
+while paes >= 51 or paes <= 0:
+    print("Só pode escolher entre 1 e 50 pães!")
+    paes = int(input("Quantos pães quer comprar: "))
+
+for i in range(13):
+    print("*", end="")
+    if i == 12:
+        print("CAIXA", end="")
+        caixa = True
+        if caixa:
+            for i in range(14):
+                print("*", end="")
+
+for i in range(1, 51):
+    soma += 0.18
+
+    if i == paes:
+        if i == 1:
+            print(f"\nTerá que pagar {soma:.2f}€ por {i} pão")
+        else:
+            print(f"\nTerá que pagar {soma:.2f}€ por {i} pães")
+"""
+O Sr. Manoel Joaquim expandiu seus negócios para além dos negócios de 1,99 e agora possui uma loja de conveniências. 
+Faça um programa que implemente uma caixa registradora rudimentar. 
+
+O programa deverá receber um número desconhecido de valores referentes aos preços das mercadorias. 
+Um valor zero deve ser informado pelo operador para indicar o final da compra. 
+
+O programa deve então mostrar o total da compra e perguntar o valor em dinheiro que o cliente forneceu, 
+para então calcular e mostrar o valor do troco. Após esta operação, o programa deverá voltar ao ponto inicial, 
+para registrar a próxima compra. 
+
+A saída deve ser conforme o exemplo abaixo:
 Lojas Tabajara 
 Produto 1: R$ 2.20
 Produto 2: R$ 5.80
@@ -384,14 +600,147 @@ Produto 3: R$ 0
 Total: R$ 9.00
 Dinheiro: R$ 20.00
 Troco: R$ 11.00
-...
-Faça um programa que calcule o fatorial de um número inteiro fornecido pelo usuário. Ex.: 5!=5.4.3.2.1=120. A saída deve ser conforme o exemplo abaixo:
+"""
+
+preco_produto = []
+recomecar_caixa = True
+
+while recomecar_caixa:
+    soma_produtos = 0
+    num_produto = 0
+
+    while True:
+        num_produto += 1
+        preco = float(input(f"Preço do Produto {num_produto} (Valor 0 se não houver mais produtos): "))
+        
+        preco_produto.append(preco)
+        
+        if preco == 0:
+            break
+        
+        soma_produtos += preco
+
+    valor_dinheiro = float(input("Qual o valor em dinheiro: "))
+
+    while valor_dinheiro <= 0 or valor_dinheiro < soma_produtos:
+        print("Valor tem que ser maior que 0, ou maior que a soma dos produtos escolhidos!")
+        valor_dinheiro = float(input("Qual o valor em dinheiro: "))
+
+    troco = valor_dinheiro - soma_produtos
+
+    print(f"Lojas Tabajara")
+
+    for i in range(num_produto):
+        print(f"Produto {i + 1}: {preco_produto[i]}")
+
+    print(f"Total: {soma_produtos:.2f} ")
+    print(f"Dinheiro: {valor_dinheiro:.2f} ")
+    print(f"Troco: {troco:.2f} ")
+
+    recomecar = int(input("Quer recomeçar o programa? Sim(1) | Não(2): "))
+
+    if recomecar == 1:
+        recomecar_caixa == True
+    elif recomecar == 2:
+        print("Volte sempre!")
+        break
+    else:
+        while True:
+            print("Escolha apenas 1 ou 2!")
+            recomecar = int(input("Quer recomeçar o programa? Sim(1) | Não(2): "))
+
+            if recomecar == 1:
+                recomecar_caixa == True
+                break
+            elif recomecar == 2:
+                print("Volte sempre!")
+                exit()
+"""
+Faça um programa que calcule o fatorial de um número inteiro fornecido pelo usuário. 
+
+Ex.: 5!=5.4.3.2.1=120. 
+
+A saída deve ser conforme o exemplo abaixo:
+
 Fatorial de: 5
 5! =  5 . 4 . 3 . 2 . 1 = 120
-O Departamento Estadual de Meteorologia lhe contratou para desenvolver um programa que leia as um conjunto indeterminado de temperaturas, e informe ao final a menor e a maior temperaturas informadas, bem como a média das temperaturas.
-Os números primos possuem várias aplicações dentro da Computação, por exemplo na Criptografia. Um número primo é aquele que é divisível apenas por um e por ele mesmo. Faça um programa que peça um número inteiro e determine se ele é ou não um número primo.
-Encontrar números primos é uma tarefa difícil. Faça um programa que gera uma lista dos números primos existentes entre 1 e um número inteiro informado pelo usuário.
-Desenvolva um programa que faça a tabuada de um número qualquer inteiro que será digitado pelo usuário, mas a tabuada não deve necessariamente iniciar em 1 e terminar em 10, o valor inicial e final devem ser informados também pelo usuário, conforme exemplo abaixo:
+"""
+factorial = int(input("Escolha o factorial: "))
+print(f"Factorial de: {factorial}")
+print(f"{factorial}! =", end=" ")
+
+soma = 1
+
+for i in range(1, factorial + 1):
+    soma *= i
+    print(factorial + 1 - i, end="")
+    if i != factorial:
+        print(" . ", end="")
+
+print(f" = {soma}")
+"""
+O Departamento Estadual de Meteorologia lhe contratou para desenvolver um programa que leia as um conjunto indeterminado de temperaturas,
+e informe ao final a menor e a maior temperaturas informadas, bem como a média das temperaturas.
+"""
+maior_temp = float('-inf')
+menor_temp = float('inf')
+temp_soma = 0
+media = 0
+
+temp = int(input("Quantas temperaturas quer medir: "))
+
+for i in range(temp):
+    temperaturas = float(input(f"Temperatura {i + 1}: "))
+    
+    temp_soma += temperaturas
+
+    if temperaturas < menor_temp:
+        menor_temp = temperaturas
+
+    if temperaturas > maior_temp:
+        maior_temp = temperaturas
+
+media = temp_soma / i
+
+print(f"Menor Temperatura: {menor_temp}\nMaior Temperatura: {maior_temp}\nMédia: {media}")
+"""
+Os números primos possuem várias aplicações dentro da Computação, por exemplo na Criptografia. 
+Um número primo é aquele que é divisível apenas por um e por ele mesmo.
+Faça um programa que peça um número inteiro e determine se ele é ou não um número primo.
+"""
+
+primo = int(input("Insira um número: "))
+
+for i in range(2, int(primo ** 0.5) + 1):
+    if primo % i == 0:
+        print(f"{primo} não é um número primo. É divisivel por {i}")
+"""
+Encontrar números primos é uma tarefa difícil. 
+
+Faça um programa que gera uma lista dos números primos existentes entre 1 e um número inteiro informado pelo usuário.
+"""
+try:
+
+    n = int(input("Até que número quer saber os números primos: "))
+
+    print(f"Números primos até {n}: ", end = "")
+
+    for i in range(2, n + 1):
+        primo = True
+        for j in range(2, int(i ** 0.5) + 1):
+            if i % j == 0:
+                primo = False
+                break
+        if primo:
+            print(f"{i}", end=", ")
+
+except ValueError:
+    print("Insira um número válido")
+"""
+Desenvolva um programa que faça a tabuada de um número qualquer inteiro que será digitado pelo usuário, 
+mas a tabuada não deve necessariamente iniciar em 1 e terminar em 10, o valor inicial e final devem ser informados também pelo usuário, 
+conforme exemplo abaixo:
+
 Montar a tabuada de: 5
 Começar por: 4
 Terminar em: 7
@@ -402,9 +751,79 @@ Vou montar a tabuada de 5 começando em 4 e terminando em 7:
 5 X 6 = 30
 5 X 7 = 35
 Obs: Você deve verificar se o usuário não digitou o final menor que o inicial.
-Uma academia deseja fazer um senso entre seus clientes para descobrir o mais alto, o mais baixo, a mais gordo e o mais magro, para isto você deve fazer um programa que pergunte a cada um dos clientes da academia seu código, sua altura e seu peso. O final da digitação de dados deve ser dada quando o usuário digitar 0 (zero) no campo código. Ao encerrar o programa também deve ser informados os códigos e valores do clente mais alto, do mais baixo, do mais gordo e do mais magro, além da média das alturas e dos pesos dos clientes
+"""
+soma = 0
+
+num_inteiro = int(input("Number: "))
+
+val_inicial = int(input("Comecar por: "))
+val_final = int(input("Terminar em: "))
+
+while val_final < val_inicial:
+    print("Valor final nao pode ser menor que o valor inicial!!")
+    val_final = int(input("Terminar em: "))
+
+for i in range(val_inicial, val_final + 1):
+    soma = i * num_inteiro
+    print(f"{num_inteiro} x {i} = {soma}")
+"""
+Uma academia deseja fazer um senso entre seus clientes para descobrir o mais alto, o mais baixo, a mais gordo e o mais magro, 
+para isto você deve fazer um programa que pergunte a cada um dos clientes da academia seu código, sua altura e seu peso. 
+
+O final da digitação de dados deve ser dada quando o usuário digitar 0 (zero) no campo código. 
+
+Ao encerrar o programa também deve ser informados os códigos e valores do cliente mais alto, do mais baixo, do mais gordo e do mais magro, 
+além da média das alturas e dos pesos dos clientes
+"""
+cliente = 0
+cliente_alto = float('-inf')
+cliente_baixo = float('inf')
+cliente_gordo = float('-inf')
+cliente_magro = float('inf')
+soma_altura = 0
+soma_peso = 0
+quantidade_clientes = 0
+
+while True:
+    cliente += 1
+
+    codigo_cliente = int(input(f"Codigo Cliente {cliente}: "))
+
+    if codigo_cliente == 0:
+        if altura_cliente < cliente_baixo:
+            cliente_baixo = altura_cliente
+            cod_cliente_baixo = codigo_cliente
+
+        if altura_cliente > cliente_alto:
+            cliente_alto = altura_cliente
+            cod_cliente_alto = codigo_cliente
+
+        if peso_cliente < cliente_magro:
+            cliente_magro = peso_cliente
+            cod_cliente_magro = codigo_cliente
+        if peso_cliente > cliente_gordo:
+            cliente_gordo = peso_cliente
+            cod_cliente_gordo = codigo_cliente
+        
+        print(f"Baixo: {cliente_baixo} Alto: {cliente_alto}")
+        print(f"Magro: {cliente_magro} Gordo: {cliente_gordo}")
+
+        media_altura = soma_altura / quantidade_clientes if quantidade_clientes > 0 else 0
+        media_peso = soma_peso / quantidade_clientes if quantidade_clientes > 0 else 0
+
+        print(f"Média Altura: {media_altura:.2f} Média Peso: {media_peso:.2f}")
+        break
+
+    altura_cliente = float(input(f"Altura Cliente {cliente}: "))
+    peso_cliente = float(input(f"Peso(Kg) Cliente {cliente}: "))
+
+    soma_altura += altura_cliente
+    soma_peso += peso_cliente
+    quantidade_clientes += 1
+    
+"""
 Um funcionário de uma empresa recebe aumento salarial anualmente: Sabe-se que:
-Esse funcionário foi contratado em 1995, com salário inicial de R$ 1.000,00;
+Esse funcionário foi contratasdo em 1995, com salário inicial de R$ 1.000,00;
 Em 1996 recebeu aumento de 1,5% sobre seu salário inicial;
 A partir de 1997 (inclusive), os aumentos salariais sempre correspondem ao dobro do percentual do ano anterior. Faça um programa que determine o salário atual desse funcionário. Após concluir isto, altere o programa permitindo que o usuário digite o salário inicial do funcionário.
 Faça um programa que leia dez conjuntos de dois valores, o primeiro representando o número do aluno e o segundo representando a sua altura em centímetros. Encontre o aluno mais alto e o mais baixo. Mostre o número do aluno mais alto e o número do aluno mais baixo, junto com suas alturas.
