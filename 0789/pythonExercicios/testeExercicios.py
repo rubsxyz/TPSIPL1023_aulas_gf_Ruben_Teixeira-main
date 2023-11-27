@@ -1,40 +1,43 @@
 """
-Um funcionário de uma empresa recebe aumento salarial anualmente: Sabe-se que:
-Esse funcionário foi contratado em 1995, com salário inicial de R$ 1.000,00;
-Em 1996 recebeu aumento de 1,5% sobre seu salário inicial;
+Foi feita uma estatística em cinco cidades brasileiras para coletar dados sobre acidentes de trânsito. Foram obtidos os seguintes dados:
+Código da cidade;
+Número de veículos de passeio (em 1999);
+Número de acidentes de trânsito com vítimas (em 1999). 
 
-A partir de 1997 (inclusive), os aumentos salariais sempre correspondem ao dobro do percentual do ano anterior. 
-
-Faça um programa que determine o salário atual desse funcionário. 
-Após concluir isto, altere o programa permitindo que o usuário digite o salário inicial do funcionário.
+Deseja-se saber:
+Qual o maior e menor índice de acidentes de transito e a que cidade pertence;
+Qual a média de veículos nas cinco cidades juntas;
+Qual a média de acidentes de trânsito nas cidades com menos de 2.000 veículos de passeio.
 """
-try:
-    salario_inicial = float(input("Digite o salário inicial do funcionário: "))
-    while salario_inicial <= 0:
-        print("Digite um salario valido maior que 0!")
-        salario_inicial = float(input("Digite o salário inicial do funcionário: "))     
+menor_acidentes = float('inf')
+maior_acidentes = float('-inf')
+soma_veiculos = 0
+soma_acidentes = 0
+soma_cidades_menos_2000 = 0
 
-except ValueError:
-    print("Digite um numero!")
-    salario_inicial = float(input("Digite o salário inicial do funcionário: "))
+for i in range(1, 6):
+    codigo_cidade = int(input(f"Código da cidade {i}: "))
+    num_veiculos = int(input(f"Cidade {i} - Número de veículos de passeio: "))
+    num_acidentes_vitimas = int(input(f"Cidade {i} - Acidentes de trânsito com vítimas: "))
 
-percentual_aumento = 1.5 / 100
-novo_percentual = 0
+    if num_acidentes_vitimas < menor_acidentes:
+        menor_acidentes = num_acidentes_vitimas
+        codigo_menor_acidentes = codigo_cidade
 
-print(f"No ano 1995 o salario e de: {salario_inicial:.2f}$")
+    if num_acidentes_vitimas > maior_acidentes:
+        maior_acidentes = num_acidentes_vitimas
+        codigo_maior_acidentes = codigo_cidade
 
-for i in range(1995, 2023 + 1):
-    while i == 1996:
-        aumento = salario_inicial * percentual_aumento
-        salario_total = salario_inicial + aumento
+    soma_veiculos += num_veiculos
 
-        print(f"No ano {i} o salario e de: {float(salario_total):.2f}$")
-        break
+    if num_veiculos < 2000:
+        soma_acidentes += num_acidentes_vitimas
+        soma_cidades_menos_2000 += 1
 
-    while i >= 1997 and i <= 2023:
-        novo_percentual += percentual_aumento + percentual_aumento
-        aumento = salario_inicial * novo_percentual
-        salario_total = salario_inicial + aumento
+media_veiculos = soma_veiculos / 5
+media_acidentes = soma_acidentes / soma_cidades_menos_2000
 
-        print(f"No ano {i} o salario e de: {float(salario_total):.2f}$")
-        break
+print(f"\nO menor indice de acidentes corresponde a cidade {codigo_menor_acidentes} com: {menor_acidentes} acidentes")
+print(f"\nO maior indice de acidentes corresponde a cidade {codigo_maior_acidentes} com: {maior_acidentes} acidentes")
+print(f"\nA media dos veiculos da: {media_veiculos} veiculos")
+print(f"\nA media de acidentes nas cidades com menos de 2000 veiculos da: {int(media_acidentes)} acidentes")
