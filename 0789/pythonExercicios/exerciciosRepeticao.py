@@ -979,21 +979,36 @@ print(f"\nO maior indice de acidentes corresponde a cidade {codigo_maior_acident
 print(f"\nA media dos veiculos da: {media_veiculos} veiculos")
 print(f"\nA media de acidentes nas cidades com menos de 2000 veiculos da: {int(media_acidentes)} acidentes")
 """
-Faça um programa que receba o valor de uma dívida e mostre uma tabela com os seguintes dados: valor da dívida, valor dos juros, quantidade de parcelas e valor da parcela.
-Os juros e a quantidade de parcelas seguem a tabela abaixo:
-Quantidade de Parcelas  % de Juros sobre o valor inicial da dívida
-1       0
-3       10
-6       15
-9       20
-12      25
-Exemplo de saída do programa:
-Valor da Dívida Valor dos Juros Quantidade de Parcelas  Valor da Parcela
-R$ 1.000,00     0               1                       R$  1.000,00
-R$ 1.100,00     100             3                       R$    366,00
-R$ 1.150,00     150             6                       R$    191,67
-Faça um programa que leia uma quantidade indeterminada de números positivos e conte quantos deles estão nos seguintes intervalos: [0-25], [26-50], [51-75] e [76-100]. A entrada de dados deverá terminar quando for lido um número negativo.
+Faça um programa que leia uma quantidade indeterminada de números positivos e conte quantos deles estão nos seguintes intervalos: 
+[0-25], [26-50], [51-75] e [76-100]. A entrada de dados deverá terminar quando for lido um número negativo.
+"""
+numeros_0_25 = 0
+numeros_26_50 = 0
+numeros_51_75 = 0
+numeros_76_100 = 0
+
+while True:
+    numero = int(input("Numeros Positivos (ou negativo para terminar): "))
+
+    while numero > 100:
+        print("Digite apenas numeros abaixo de 100!")
+        numero = int(input("Numeros Positivos (ou negativo para terminar): "))
+
+    if numero < 0: break
+
+    if 0 <= numero <= 25: numeros_0_25 += 1
+    elif 26 <= numero <= 50: numeros_26_50 += 1
+    elif 51 <= numero <= 75: numeros_51_75 += 1
+    elif 76 <= numero <= 100: numeros_76_100 += 1
+
+
+print(f"Numeros [0-25]: {numeros_0_25}")
+print(f"Numeros [26-50]: {numeros_26_50}")
+print(f"Numeros [51-75]: {numeros_51_75}")
+print(f"Numeros [76-100]: {numeros_76_100}")
+"""
 O cardápio de uma lanchonete é o seguinte:
+
 Especificação   Código  Preço
 Cachorro Quente 100     R$ 1,20
 Bauru Simples   101     R$ 1,30
@@ -1001,7 +1016,45 @@ Bauru com ovo   102     R$ 1,50
 Hambúrguer      103     R$ 1,20
 Cheeseburguer   104     R$ 1,30
 Refrigerante    105     R$ 1,00
-Faça um programa que leia o código dos itens pedidos e as quantidades desejadas. Calcule e mostre o valor a ser pago por item (preço * quantidade) e o total geral do pedido. Considere que o cliente deve informar quando o pedido deve ser encerrado.
+
+Faça um programa que leia o código dos itens pedidos e as quantidades desejadas. 
+
+Calcule e mostre o valor a ser pago por item (preço * quantidade) e o total geral do pedido. 
+
+Considere que o cliente deve informar quando o pedido deve ser encerrado.
+"""
+valor_total = 0
+
+while True:
+    codigo_refeicao = int(input("Código do Item (ou -1 para encerrar): "))
+
+    if codigo_refeicao == -1:
+        break
+
+    quantidade = int(input(f"Quantidade do item {codigo_refeicao}: "))
+
+    if codigo_refeicao == 100:
+        preco_item = 1.20
+    elif codigo_refeicao == 101:
+        preco_item = 1.30
+    elif codigo_refeicao == 102:
+        preco_item = 1.50
+    elif codigo_refeicao == 103:
+        preco_item = 1.20
+    elif codigo_refeicao == 104:
+        preco_item = 1.30
+    elif codigo_refeicao == 105:
+        preco_item = 1.00
+    else:
+        print("Código inválido.")
+        continue
+
+    total = preco_item * quantidade
+    valor_total += total
+    print(f"Valor a ser pago pelo item {codigo_refeicao}: R$ {total:.2f}")
+
+print(f"Total a pagar: R$ {valor_total:.2f}")
+"""
 Em uma eleição presidencial existem quatro candidatos. Os votos são informados por meio de código. Os códigos utilizados são:
 1 , 2, 3, 4  - Votos para os respectivos candidatos 
 (você deve montar a tabela ex: 1 - Jose/ 2- João/etc)
