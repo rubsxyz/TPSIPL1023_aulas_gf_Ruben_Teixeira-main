@@ -1060,12 +1060,66 @@ Em uma eleição presidencial existem quatro candidatos. Os votos são informado
 (você deve montar a tabela ex: 1 - Jose/ 2- João/etc)
 5 - Voto Nulo
 6 - Voto em Branco
+
 Faça um programa que calcule e mostre:
 O total de votos para cada candidato;
 O total de votos nulos;
 O total de votos em branco;
 A percentagem de votos nulos sobre o total de votos;
-A percentagem de votos em branco sobre o total de votos. Para finalizar o conjunto de votos tem-se o valor zero.
+A percentagem de votos em branco sobre o total de votos.
+
+Para finalizar o conjunto de votos tem-se o valor zero.
+"""
+votador = 0
+
+candidato_1 = 0
+candidato_2 = 0
+candidato_3 = 0
+candidato_4 = 0
+votos_nulos = 0
+percentagem_nulos = 0
+votos_brancos = 0
+percentagem_brancos = 0
+
+total = 0
+
+
+print("1 - Jose\t2 - Ruben\t3 - Renata\t4 - Jake\t5 - Voto Nulo\t6 - Voto Branco")
+
+while True:
+    votador += 1
+    voto = int(input(f"Votador {votador}. Em que candidato vota (0 para finalizar): "))
+    if voto == 0: break
+
+    while voto <= -1:
+        print("Escolha votar apenas em 1,2,3,4, ou 5")
+        voto = int(input(f"Votador {votador}. Em que candidato vota (0 para finalizar): "))
+    else:
+        if voto == 1:
+            candidato_1 += 1
+        elif voto == 2:
+            candidato_2 += 1
+        elif voto == 3:
+            candidato_3 += 1
+        elif voto == 4:
+            candidato_4 += 1
+        elif voto == 5:
+            votos_brancos += 1
+        else:
+            votos_nulos += 1
+
+total = candidato_1 + candidato_2 + candidato_3 + candidato_4 + votos_nulos + votos_brancos
+
+percentagem_nulos = (votos_nulos / total) * 100
+percentagem_brancos = (votos_brancos / total) * 100
+
+print(f"Votos candidato 1: {candidato_1}")
+print(f"Votos candidato 2: {candidato_2}")
+print(f"Votos candidato 3: {candidato_3}")
+print(f"Votos candidato 4: {candidato_4}")
+print(f"Votos Nulos: {votos_nulos}, com uma percentagem de {percentagem_nulos:.0f}%")
+print(f"Votos em Branco: {votos_brancos}, com uma percentagem de {percentagem_brancos:.0f}%")
+"""
 Desenvolver um programa para verificar a nota do aluno em uma prova com 10 questões, o programa deve perguntar ao aluno a resposta de cada questão e ao final comparar com o gabarito da prova e assim calcular o total de acertos e a nota (atribuir 1 ponto por resposta certa). Após cada aluno utilizar o sistema deve ser feita uma pergunta se outro aluno vai utilizar o sistema. Após todos os alunos terem respondido informar:
 Maior e Menor Acerto;
 Total de Alunos que utilizaram o sistema;

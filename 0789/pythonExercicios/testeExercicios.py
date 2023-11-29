@@ -1,31 +1,85 @@
-valor_total = 0
+"""
+Desenvolver um programa para verificar a nota do aluno em uma prova com 10 questões, 
+o programa deve perguntar ao aluno a resposta de cada questão e ao final comparar com 
+o gabarito da prova e assim calcular o total de acertos e a nota (atribuir 1 ponto por resposta certa). 
 
-while True:
-    codigo_refeicao = int(input("Código do Item (ou -1 para encerrar): "))
+Após cada aluno utilizar o sistema deve ser feita uma pergunta se outro aluno vai utilizar o sistema. 
+Após todos os alunos terem respondido informar:
 
-    if codigo_refeicao == -1:
+Maior e Menor Acerto;
+Total de Alunos que utilizaram o sistema;
+A Média das Notas da Turma.
+Gabarito da Prova:
+
+01 - A
+02 - B
+03 - C
+04 - D
+05 - E
+06 - E
+07 - D
+08 - C
+09 - B
+10 - A
+"""
+aluno = 0
+repetir_programa = True
+maior_acerto = float('-inf')
+aluno_maior = 0
+menor_acerto = float('inf')
+aluno_menor = 0
+soma_notas = 0
+total_alunos = 0
+
+while repetir_programa:
+    aluno += 1
+    pontos = 0
+
+    print(f"Aluno {aluno} vai responder!")
+
+    for i in range(1, 11):
+        resposta = input(f"Aluno {aluno} | Resposta Questão {i}: ")
+
+        if i == 1 and resposta.lower() == 'a':
+            pontos += 1
+        elif i == 2 and resposta.lower() == 'b':
+            pontos += 1
+        elif i == 3 and resposta.lower() == 'c':
+            pontos += 1
+        elif i == 4 and resposta.lower() == 'd':
+            pontos += 1
+        elif i == 5 and resposta.lower() == 'e':
+            pontos += 1
+        elif i == 6 and resposta.lower() == 'e':
+            pontos += 1
+        elif i == 7 and resposta.lower() == 'd':
+            pontos += 1
+        elif i == 8 and resposta.lower() == 'c':
+            pontos += 1
+        elif i == 9 and resposta.lower() == 'b':
+            pontos += 1
+        elif i == 10 and resposta.lower() == 'a':
+            pontos += 1
+
+    soma_notas += pontos
+    total_alunos += 1
+
+    if pontos > maior_acerto:
+        maior_acerto = pontos
+        aluno_maior = aluno
+        
+    if pontos < menor_acerto:
+        menor_acerto = pontos
+        aluno_menor = aluno
+
+    repetir = input("Outro aluno vai utilizar o programa? (S)im (N)ao: ")
+
+    if repetir.lower() == 'n': 
+        print(f"O aluno {aluno} obteve {pontos} pontos")
+        print(f"Maior acerto: {maior_acerto} pelo aluno {aluno_maior}")
+        print(f"Menor acerto: {menor_acerto} pelo aluno {aluno_menor}")
+        print(f"Total de alunos que utilizaram o sistema: {total_alunos}")
+        print(f"Média das notas da turma: {soma_notas / total_alunos}")
         break
-
-    quantidade = int(input(f"Quantidade do item {codigo_refeicao}: "))
-
-    if codigo_refeicao == 100:
-        preco_item = 1.20
-    elif codigo_refeicao == 101:
-        preco_item = 1.30
-    elif codigo_refeicao == 102:
-        preco_item = 1.50
-    elif codigo_refeicao == 103:
-        preco_item = 1.20
-    elif codigo_refeicao == 104:
-        preco_item = 1.30
-    elif codigo_refeicao == 105:
-        preco_item = 1.00
-    else:
-        print("Código inválido.")
-        continue
-
-    total = preco_item * quantidade
-    valor_total += total
-    print(f"Valor a ser pago pelo item {codigo_refeicao}: R$ {total:.2f}")
-
-print(f"Total a pagar: R$ {valor_total:.2f}")
+    elif repetir.lower() == 's': 
+        repetir_programa
