@@ -4,6 +4,17 @@ Faça um Programa que leia um vetor de 5 números inteiros e mostre-os.
 numeros = [1,2,3,4,5,6,7,8,123,412,]
 for i in numeros:
     print(i, end=" ")
+
+# ou
+print("\n")
+
+numeros2 = []
+
+for i in range(1,6):
+    numeros2.append(i)
+    
+for elem in numeros2:
+    print(elem, end=" ")
 """
 Faça um Programa que leia um vetor de 10 números reais e mostre-os na ordem inversa.
 """
@@ -37,8 +48,30 @@ for i in range(1,11):
 
 print(f"Existem {consoantes} consoantes")
 print(f"Vetor de consoantes: {vetor}")
+# cria as listas
+vetor_total = []
+vetor_par = []
+vetor_impar = []
+
+for i in range(1,21):
+    vetor_total.append(i)
+
+    if i % 2 == 0:
+        vetor_par.append(i) #se for par adiciona ao array par
+    else:
+        vetor_impar.append(i) #se for impar adiciona ao array impar
+
+print(f"TOTAL: ", end="")
+for elemento_total in vetor_total: print(f"{elemento_total}", end=' ') #consegue printar os elementos das listas sem os []
+print(f"\nPAR: ", end="")
+for elemento_par in vetor_par: print(f"{elemento_par}", end=' ')
+print(f"\nIMPAR: ", end="")
+for elemento_impar in vetor_impar: print(f"{elemento_impar}", end=' ')
+
+print("\n\nTOTAL:", ' '.join(map(str, vetor_total)))
+print("PAR:", ' '.join(map(str, vetor_par)))
+print("ÍMPAR:", ' '.join(map(str, vetor_impar)))
 """
-Faça um Programa que leia 20 números inteiros e armazene-os num vetor. Armazene os números pares no vetor PAR e os números IMPARES no vetor impar. Imprima os três vetores.
 Faça um Programa que peça as quatro notas de 10 alunos, calcule e armazene num vetor a média de cada aluno, imprima o número de alunos com média maior ou igual a 7.0.
 Faça um Programa que leia um vetor de 5 números inteiros, mostre a soma, a multiplicação e os números.
 Faça um Programa que peça a idade e a altura de 5 pessoas, armazene cada informação no seu respectivo vetor. Imprima a idade e a altura na ordem inversa a ordem lida.

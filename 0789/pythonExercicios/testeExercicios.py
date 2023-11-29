@@ -1,19 +1,17 @@
 """
-Faça um Programa que leia 20 números inteiros e armazene-os num vetor. 
-Armazene os números pares no vetor PAR e os números IMPARES no vetor impar. Imprima os três vetores.
+Faça um Programa que leia um vetor de 5 números inteiros e mostre-os.
 """
-vetor_total = []
-vetor_par = []
-vetor_impar = []
+numeros = [1,2,3,4,5,6,7,8,123,412,]
+for i in numeros:
+    print(i, end=" ")
 
-for i in range(1,21):
-    vetor_total.append(i)
+# ou
+print("\n")
 
-    if i % 2 == 0:
-        vetor_par.append(i)
-    else:
-        vetor_impar.append(i)
+numeros2 = []
 
-print(f"Total: {vetor_total}")
-print(f"PAR: {vetor_par}")
-print(f"IMPAR: {vetor_impar}")
+for i in range(1,6):
+    numeros2.append(i)
+    
+for elem in numeros2:
+    print(elem, end=" ")
