@@ -61,23 +61,119 @@ for i in range(1,21):
     else:
         vetor_impar.append(i) #se for impar adiciona ao array impar
 
-print(f"TOTAL: ", end="")
-for elemento_total in vetor_total: print(f"{elemento_total}", end=' ') #consegue printar os elementos das listas sem os []
-print(f"\nPAR: ", end="")
-for elemento_par in vetor_par: print(f"{elemento_par}", end=' ')
-print(f"\nIMPAR: ", end="")
-for elemento_impar in vetor_impar: print(f"{elemento_impar}", end=' ')
+print(f"TOTAL:", *vetor_total)
+print(f"PAR:", *vetor_par)
+print(f"IMPAR:", *vetor_impar)
 
-print("\n\nTOTAL:", ' '.join(map(str, vetor_total)))
-print("PAR:", ' '.join(map(str, vetor_par)))
-print("ÍMPAR:", ' '.join(map(str, vetor_impar)))
 """
-Faça um Programa que peça as quatro notas de 10 alunos, calcule e armazene num vetor a média de cada aluno, imprima o número de alunos com média maior ou igual a 7.0.
+Faça um Programa que peça as quatro notas de 10 alunos, 
+calcule e armazene num vetor a média de cada aluno, imprima o número de alunos com média maior ou igual a 7.0.
+"""
+media = []
+num_alunos_7 = 0
+
+for i in range(1,5):
+    nota_1 = int(input(f"Aluno {i} | Nota 1: "))
+    nota_2 = int(input(f"Aluno {i} | Nota 2: "))
+    nota_3 = int(input(f"Aluno {i} | Nota 3: "))
+    nota_4 = int(input(f"Aluno {i} | Nota 4: "))
+
+    media.append((nota_1 + nota_2 + nota_3 + nota_4) / 4)
+
+print(media)
+
+for elm in media:
+    if elm >= 7:
+        num_alunos_7 += 1
+
+print(f"Existem {num_alunos_7} com media maior ou igual a 7")
+"""
 Faça um Programa que leia um vetor de 5 números inteiros, mostre a soma, a multiplicação e os números.
-Faça um Programa que peça a idade e a altura de 5 pessoas, armazene cada informação no seu respectivo vetor. Imprima a idade e a altura na ordem inversa a ordem lida.
+"""
+vetor = []
+
+for i in range(1,6):
+    num_inteiro = int(input(f"Number {i}: "))
+    vetor.append(num_inteiro)
+
+soma = sum(vetor)
+produto = 1
+for elemento in vetor:
+    produto *= elemento
+
+print(f"A soma dos números: {soma}")
+print(f"A multiplicação dos números: {produto}")
+print("Os números:", *vetor)
+"""
+Faça um Programa que peça a idade e a altura de 5 pessoas, 
+armazene cada informação no seu respectivo vetor. 
+
+Imprima a idade e a altura na ordem inversa a ordem lida.
+"""
+
+idade = []
+altura = []
+
+for i in range(1,6):
+    idade_pessoa = int(input(f"Idade pessoa {i}: "))
+    altura_pessoa = float(input(f"Altura pessoa {i}: "))
+
+    idade.append(idade_pessoa)
+    altura.append(altura_pessoa)
+
+print("\nIdade: ", end="")
+for elm in reversed(idade):
+    print(elm, end=" ")
+
+print("\nAltura: ", end="")
+for elm in reversed(altura):
+    print(f"{elm}", end=" ")
+"""
 Faça um Programa que leia um vetor A com 10 números inteiros, calcule e mostre a soma dos quadrados dos elementos do vetor.
-Faça um Programa que leia dois vetores com 10 elementos cada. Gere um terceiro vetor de 20 elementos, cujos valores deverão ser compostos pelos elementos intercalados dos dois outros vetores.
+"""
+
+vetor_A = [1,2,3,4,5,6,7,8,9,10]
+vetor_quadratico = []
+soma_quadrados = 0
+
+for elm in vetor_A:
+    soma = elm * elm
+    print(f"Soma: {elm} * {elm} = {soma}")
+    vetor_quadratico.append(soma)
+    soma_quadrados += soma
+
+print("\n", *vetor_quadratico)
+print("A soma dos quadrados dos elementos do vetor é:", soma_quadrados)
+"""
+Faça um Programa que leia dois vetores com 10 elementos cada. 
+Gere um terceiro vetor de 20 elementos, cujos valores deverão ser compostos pelos elementos 
+intercalados dos dois outros vetores.
+"""
+
+vetor_1 = [1,3,5,7,9,11,13,15,17,19]
+vetor_2 = [2,4,6,8,10,12,14,16,18,20]
+vetor_3 = []
+
+for elm in range(len(vetor_1)): #len retorna o tamanho do vetor, e necessario para retornar o tamanho da array
+    vetor_3.append(vetor_1[elm])
+    vetor_3.append(vetor_2[elm])
+
+print(*vetor_3)
+"""
 Altere o programa anterior, intercalando 3 vetores de 10 elementos cada.
+"""
+vetor_1 = [1,2,3,4,5,6,7,8,9,10]
+vetor_2 = [11,22,33,44,55,66,77,88,99,100]
+vetor_3 = [111,222,333,444,555,666,777,888,999,1000]
+vetor_4 = []
+
+for elm in range(len(vetor_1)): #len retorna o tamanho do vetor, e necessario para retornar o tamanho da array
+    vetor_4.append(vetor_1[elm])
+    vetor_4.append(vetor_2[elm])
+    vetor_4.append(vetor_3[elm])
+
+print(*vetor_4)
+"""
 Foram anotadas as idades e alturas de 30 alunos. Faça um Programa que determine quantos alunos com mais de 13 anos possuem altura inferior à média de altura desses alunos.
 Faça um programa que receba a temperatura média de cada mês do ano e armazene-as em uma lista. Após isto, calcule a média anual das temperaturas e mostre todas as temperaturas acima da média anual, e em que mês elas ocorreram (mostrar o mês por extenso: 1 – Janeiro, 2 – Fevereiro, . . . ).
 Utilizando listas faça um programa que faça 5 perguntas para uma pessoa sobre um crime. As perguntas são:
