@@ -7,6 +7,7 @@ Faça um programa para imprimir:
     n   n   n   n   n   n  ... n
 para um n informado pelo usuário. Use uma função que receba um valor n inteiro e imprima até a n-ésima linha.
 """
+
 def numeros():
     num = int(input("Insira o n: "))
 
@@ -74,7 +75,6 @@ custo, que é o custo de um item antes do imposto.
 
 A função “altera” o valor de custo para incluir o imposto sobre vendas.
 """
-
 def somaImposto(custo):
     taxaImposto = 0.15
     imposto = custo * taxaImposto
