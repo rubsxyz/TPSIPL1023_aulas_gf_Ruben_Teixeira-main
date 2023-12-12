@@ -507,7 +507,15 @@ As possíveis respostas são:
 4- Netware
 5- Mac OS
 6- Outro
-Você foi contratado para desenvolver um programa que leia o resultado da enquete e informe ao final o resultado da mesma. O programa deverá ler os valores até ser informado o valor 0, que encerra a entrada dos dados. Não deverão ser aceitos valores além dos válidos para o programa (0 a 6). Os valores referentes a cada uma das opções devem ser armazenados num vetor. Após os dados terem sido completamente informados, o programa deverá calcular a percentual de cada um dos concorrentes e informar o vencedor da enquete. O formato da saída foi dado pela empresa, e é o seguinte:
+Você foi contratado para desenvolver um programa que leia o resultado da enquete e informe ao final o resultado da mesma. 
+O programa deverá ler os valores até ser informado o valor 0, que encerra a entrada dos dados. 
+
+Não deverão ser aceitos valores além dos válidos para o programa (0 a 6). 
+Os valores referentes a cada uma das opções devem ser armazenados num vetor. 
+
+Após os dados terem sido completamente informados, o programa deverá calcular a percentual de cada um dos concorrentes 
+e informar o vencedor da enquete. O formato da saída foi dado pela empresa, e é o seguinte:
+
 Sistema Operacional     Votos   %
 -------------------     -----   ---
 Windows Server           1500   17%
@@ -520,6 +528,58 @@ Outro                     150    2%
 Total                    8800
 
 O Sistema Operacional mais votado foi o Unix, com 3500 votos, correspondendo a 40% dos votos.
+"""
+servidores = ['Windows Server', 'Unix', 'Linux', 'Netware', 'Mac OS', 'Outro']
+votos = []
+
+
+print("Windows Server > 1\nUnix > 2\nLinux > 3\nNetware > 4\nMac OS > 5\nOutro > 6\n")
+
+while True:
+    voto_sistema_operativo = int(input("Qual o melhor Sistema Operacional para uso em servidores? "))
+
+    while voto_sistema_operativo > 6 or voto_sistema_operativo < 0:
+        print("Insira um valor valido! (0 a 6)")
+        voto_sistema_operativo = int(input("Qual o melhor Sistema Operacional para uso em servidores? "))
+        
+    if voto_sistema_operativo != 0:
+        votos.append(voto_sistema_operativo)
+
+    if voto_sistema_operativo == 0:
+        break
+    
+    windows_server = votos.count(1)
+    unix = votos.count(2)
+    linux = votos.count(3)
+    netware = votos.count(4)
+    macos = votos.count(5)
+    outro = votos.count(6)
+
+    total = windows_server + unix + linux + netware + macos + outro
+    
+percentual_windows_server = (windows_server / total) * 100
+percentual_unix = (unix / total) * 100
+percentual_linux = (linux / total) * 100
+percentual_netware = (netware / total) * 100
+percentual_macos = (macos / total) * 100
+percentual_outro = (outro / total) * 100
+
+mais_votado = max(votos)
+
+print(f"O sistema operacional mais votado foi o {servidores[mais_votado]}.")
+print("\nSistema Operacional\tVotos\t%")
+print("-------------------\t-----\t---")
+print(f"{servidores[0]}\t\t{windows_server}\t{percentual_windows_server:.2f}")
+print(f"{servidores[1]}\t\t\t{unix}\t{percentual_unix:.2f}")
+print(f"{servidores[2]}\t\t\t{linux}\t{percentual_linux:.2f}")
+print(f"{servidores[3]}\t\t\t{netware}\t{percentual_netware:.2f}")
+print(f"{servidores[4]}\t\t\t{macos}\t{percentual_macos:.2f}")
+print(f"{servidores[5]}\t\t\t{outro}\t{percentual_outro:.2f}")
+print("-------------------\t-----")
+print(f"Total\t\t\t{total}")
+
+print(f"O sistema operacional mais votado foi o {servidores[mais_votado]}.")
+"""
 As Organizações Tabajara resolveram dar um abono aos seus colaboradores em reconhecimento ao bom resultado alcançado durante o ano que passou. Para isto contratou você para desenvolver a aplicação que servirá como uma projeção de quanto será gasto com o pagamento deste abono.
 Após reuniões envolvendo a diretoria executiva, a diretoria financeira e os representantes do sindicato laboral, chegou-se a seguinte forma de cálculo:
 a.Cada funcionário receberá o equivalente a 20% do seu salário bruto de dezembro; a.O piso do abono será de 100 reais, isto é, aqueles funcionários cujo salário for muito baixo, recebem este valor mínimo; Neste momento, não se deve ter nenhuma preocupação com colaboradores com tempo menor de casa, descontos, impostos ou outras particularidades. Seu programa deverá permitir a digitação do salário de um número indefinido (desconhecido) de salários. Um valor de salário igual a 0 (zero) encerra a digitação. Após a entrada de todos os dados o programa deverá calcular o valor do abono concedido a cada colaborador, de acordo com a regra definida acima. Ao final, o programa deverá apresentar:

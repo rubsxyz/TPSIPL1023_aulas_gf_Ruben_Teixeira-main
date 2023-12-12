@@ -1,37 +1,42 @@
 """
-Faça um programa que converta da notação de 24 horas para a notação de 12 horas. 
-Por exemplo, o programa deve converter 14:25 em 2:25 P.M. A entrada é dada em dois inteiros. 
-Deve haver pelo menos duas funções: uma para fazer a conversão e uma para a saída. 
-Registre a informação A.M./P.M. como um valor ‘A’ para A.M. e ‘P’ para P.M. 
-Assim, a função para efetuar as conversões terá um parâmetro formal para registrar se é A.M. ou P.M. 
-Inclua um loop que permita que o usuário repita esse cálculo para novos valores de entrada todas as vezes que desejar.
+As Organizações Tabajara resolveram dar um abono aos seus colaboradores em reconhecimento ao bom resultado alcançado durante o ano que passou. 
+Para isto contratou você para desenvolver a aplicação que servirá como uma projeção de quanto será gasto com o pagamento deste abono.
+
+Após reuniões envolvendo a diretoria executiva, a diretoria financeira e os representantes do sindicato laboral, 
+chegou-se a seguinte forma de cálculo:
+a.
+Cada funcionário receberá o equivalente a 20% do seu salário bruto de dezembro; 
+a.O piso do abono será de 100 reais, isto é, aqueles funcionários cujo salário for muito baixo, recebem este valor mínimo; 
+Neste momento, não se deve ter nenhuma preocupação com colaboradores com tempo menor de casa, descontos, 
+impostos ou outras particularidades. Seu programa deverá permitir a digitação do salário de um número indefinido 
+(desconhecido) de salários. 
+Um valor de salário igual a 0 (zero) encerra a digitação. 
+Após a entrada de todos os dados o programa deverá calcular o
+ valor do abono concedido a cada colaborador, de acordo com a regra definida acima. Ao final, o programa deverá apresentar:
+O salário de cada funcionário, juntamente com o valor do abono;
+O número total de funcionário processados;
+O valor total a ser gasto com o pagamento do abono;
+O número de funcionário que receberá o valor mínimo de 100 reais;
+O maior valor pago como abono; A tela abaixo é um exemplo de execução do programa, apenas para fins ilustrativos. Os valores podem mudar a cada execução do programa.
+Projeção de Gastos com Abono
+============================ 
+ 
+Salário: 1000
+Salário: 300
+Salário: 500
+Salário: 100
+Salário: 4500
+Salário: 0
+ 
+Salário    - Abono     
+R$ 1000.00 - R$  200.00
+R$  300.00 - R$  100.00
+R$  500.00 - R$  100.00
+R$  100.00 - R$  100.00
+R$ 4500.00 - R$  900.00
+ 
+Foram processados 5 colaboradores
+Total gasto com abonos: R$ 1400.00
+Valor mínimo pago a 3 colaboradores
+Maior valor de abono pago: R$ 900.00
 """
-def converter_horario(horas, minutos):
-    # Verifica se é A.M. ou P.M. e ajusta as horas
-    periodo = 'A.M.'
-    if horas >= 12:
-        periodo = 'P.M.'
-        horas -= 12
-    if horas == 0:  # Se for meia-noite, ajusta para 12 A.M.
-        horas = 12
-    return horas, minutos, periodo
-
-def imprimir_horario(horas, minutos, periodo):
-    print(f"{horas}:{minutos:02d} {periodo}")
-
-# Loop para permitir que o usuário faça várias conversões
-while True:
-    try:
-        hora_24 = input("Digite o horário no formato HH:MM (24 horas), ou 'sair' para encerrar: ")
-        if hora_24.lower() == 'sair':
-            break
-        horas, minutos = map(int, hora_24.split(':'))
-
-        if horas < 0 or horas > 23 or minutos < 0 or minutos > 59:
-            print("Por favor, insira um horário válido.")
-            continue
-
-        horas_convertidas, minutos_convertidos, periodo = converter_horario(horas, minutos)
-        imprimir_horario(horas_convertidas, minutos_convertidos, periodo)
-    except ValueError:
-        print("Formato inválido. Por favor, insira o horário no formato HH:MM.")
